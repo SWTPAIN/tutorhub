@@ -1,4 +1,4 @@
 class Job < ActiveRecord::Base
-  belongs_to :student, class: "User"
-  belongs_to :tutor, clas: "User"
+  belongs_to :student, class_name: "User"
+  belongs_to :tutor, class_name: "User"
 end
