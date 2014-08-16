@@ -17,7 +17,6 @@ module Tutorhub
   class Application < Rails::Application
     config.assets.paths << Rails.root.join("vendor","assets","bower_components","bootstrap-sass-official","assets","fonts")
 
-    config.autoload_paths << "#{Rails.root}/lib"
-
+    config.autoload_paths << Rails.root.join('lib')
   end
 end
