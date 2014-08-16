@@ -1,25 +1,28 @@
 module Userable
-  def self.included(base)
-    base.has_one :user, as: :userable, dependent: :destroy, autosave:true
-    base.validate :user_must_be_valid
-    base.alias_method_chain :user, :autobuild
 
-    base.extend ClassMethods
-    base.define_user_accessors
+  extend ActiveSupport::Concern
+  #ActiveSuppoert::Concern auto extend ClassMethods
+  included do
+    has_one :user, as: :userable, dependent: :destroy, autosave:true
+    validate :user_must_be_valid
+    alias_method_chain :user, :autobuild
   end
 
+  #user has to be built first in case it doesn’t exist
   def user_with_autobuild
     user_without_autobuild || build_user
   end
 
+  #Fixing method_missing
   def method_missing(meth, *args, &blk)
       user.send(meth, *args, &blk)
     rescue NoMethodError
       super
   end
 
+  #Handling attributes hash
   module ClassMethods
-    def defind_user_accessors
+    def define_user_accessors
       all_attributes = User.content_columns.map(&:name)
       all_attributes << "password"
       all_attributes << "password_confirmation"
@@ -35,7 +38,7 @@ module Userable
             self.user.#{attrib} = value
           end
 
-          def #{attrib}
+          def #{attrib}?
             self.user.#{attrib}?
           end
         RUBY
@@ -43,7 +46,7 @@ module Userable
     end
   end
 
-
+#add validator from User model to Tutor or Student
 protected
   def user_must_be_valid
     unless user.valid?
