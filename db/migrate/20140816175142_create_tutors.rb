@@ -4,7 +4,7 @@ class CreateTutors < ActiveRecord::Migration
       t.text :description
       t.string :education_level
       t.string :institute
-      t.string :gender
+      t.boolean :gender
     end
   end
 end

@@ -39,10 +39,10 @@ ActiveRecord::Schema.define(version: 20140819064459) do
   end
 
   create_table "tutors", force: true do |t|
-    t.text   "description"
-    t.string "education_level"
-    t.string "institute"
-    t.string "gender"
+    t.text    "description"
+    t.string  "education_level"
+    t.string  "institute"
+    t.boolean "gender"
   end
 
   create_table "users", force: true do |t|
