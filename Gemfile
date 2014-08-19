@@ -31,6 +31,7 @@ group :development, :test do
   gem 'faker'
   gem 'shoulda-matchers'
   gem 'capybara'
+  gem 'database_cleaner'
 end
 
 # Use Capistrano for deployment

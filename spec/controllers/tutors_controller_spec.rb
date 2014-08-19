@@ -4,8 +4,8 @@ describe TutorsController do
 
   describe 'GET index' do
     before do
-      alice = Fabricate(:user, name: 'Alice')
-      bob = Fabricate(:user, name: 'Bob')
+      alice = Fabricate(:tutor, name: 'Alice')
+      bob = Fabricate(:tutor, name: 'Bob')
       xhr :get, :index, format: :json
     end
 
