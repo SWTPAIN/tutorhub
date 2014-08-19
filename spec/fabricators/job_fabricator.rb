@@ -1,0 +1,2 @@
+Fabricator(:job) do
+end
