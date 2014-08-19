@@ -21,11 +21,11 @@ gem 'unicorn'
 
 
 group :development do
-  gem 'pry'
   gem "better_errors"
 end
 
 group :development, :test do
+  gem 'pry'
   gem 'rspec-rails', '~> 3.0.0'
   gem 'fabrication'
   gem 'faker'

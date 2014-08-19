@@ -4,6 +4,6 @@ Fabricator(:tutor) do
   password  'password'
   password_confirmation 'password'
   description { Faker::Lorem.paragraph }
-  education_level { Faker::Lorem.words }
-  institute { Faker::Lorem.words }
+  education_level { Faker::Lorem.word }
+  institute { Faker::Lorem.word }
 end
