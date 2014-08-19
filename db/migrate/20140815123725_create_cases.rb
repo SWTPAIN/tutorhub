@@ -1,12 +1,13 @@
 class CreateCases < ActiveRecord::Migration
   def change
     create_table :cases do |t|
-      t.integer :user_id
+      t.integer :employer_id
       t.string :subject
       t.string :grade
       t.string :location
-      t.string :dowm
+      t.string :dow
       t.string :time
+      t.boolean :close, default: false
       t.text :description
 
       t.timestamps
