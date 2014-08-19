@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20140819095027) do
+ActiveRecord::Schema.define(version: 20140819120021) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -29,9 +29,6 @@ ActiveRecord::Schema.define(version: 20140819095027) do
     t.datetime "updated_at"
   end
 
-  create_table "categories", force: true do |t|
-  end
-
   create_table "employers", force: true do |t|
   end
 
@@ -42,7 +39,15 @@ ActiveRecord::Schema.define(version: 20140819095027) do
     t.datetime "updated_at"
   end
 
+  create_table "subject_tags", force: true do |t|
+    t.integer "subject_id"
+    t.integer "subject_taggable_type"
+    t.integer "subject_taggable_id"
+  end
+
   create_table "subjects", force: true do |t|
+    t.string "name"
+    t.string "category_name"
   end
 
   create_table "tutors", force: true do |t|
