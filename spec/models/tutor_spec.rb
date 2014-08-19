@@ -9,4 +9,5 @@ RSpec.describe Tutor, :type => :model do
   it { should have_many(:jobs) }
   it { should have_many(:employers)}
 
+
 end

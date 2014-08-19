@@ -1,7 +1,10 @@
-class TutorsController < ApplicationController
+class Tutors < ApplicationController
 
   def index
-    @featured_tutors = Tutor.where(feature: true)
+    @tutors = Tutor.where(featured: true)
+
   end
+
+
 
 end
