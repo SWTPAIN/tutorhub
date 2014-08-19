@@ -17,12 +17,13 @@ ActiveRecord::Schema.define(version: 20140819064459) do
   enable_extension "plpgsql"
 
   create_table "cases", force: true do |t|
-    t.integer  "user_id"
+    t.integer  "employer_id"
     t.string   "subject"
     t.string   "grade"
     t.string   "location"
-    t.string   "dowm"
+    t.string   "dow"
     t.string   "time"
+    t.boolean  "close",       default: false
     t.text     "description"
     t.datetime "created_at"
     t.datetime "updated_at"
