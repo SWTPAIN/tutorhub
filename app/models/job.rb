@@ -1,4 +1,5 @@
 class Job < ActiveRecord::Base
-  belongs_to :student
+
+  belongs_to :employer
   belongs_to :tutor
 end
