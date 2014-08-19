@@ -21,15 +21,17 @@ gem 'unicorn'
 
 
 group :development do
-  gem 'pry'
   gem "better_errors"
 end
 
 group :development, :test do
+  gem 'pry'
   gem 'rspec-rails', '~> 3.0.0'
   gem 'fabrication'
   gem 'faker'
   gem 'shoulda-matchers'
+  gem 'capybara'
+  gem 'database_cleaner'
 end
 
 # Use Capistrano for deployment
