@@ -30,6 +30,7 @@ group :development, :test do
   gem 'fabrication'
   gem 'faker'
   gem 'shoulda-matchers'
+  gem 'capybara'
 end
 
 # Use Capistrano for deployment

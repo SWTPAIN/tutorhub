@@ -13,10 +13,13 @@
         templateUrl: 'index.html',
         controller: 'TutorsController'
       })
-      // .whne('/login', {
-      //
-      // })
-      ;
+      .when('/login', {
+        templateUrl: 'sign.html',
+        controller: 'UsersController'
+      })
+      .otherwise({
+        redirectTo: '/'
+      })      ;
   }]);
 
   var controllers = angular.module('controllers', []);

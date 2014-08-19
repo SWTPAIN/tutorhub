@@ -2,20 +2,27 @@ require 'rails_helper'
 
 describe TutorsController do
 
-  describe 'GET new' do
-    it 'set the @tutor variable' do
-      xhr :get, :new
-      expect(assigns(:tutor)).to be_instance_of (Tutor)
-    end
-  end
-
   describe 'GET index' do
-    it 'set the @tutors variable' do
-      alice = Fabricate(:user)
-      bob = Fabricate(:user)
-      xhr :get, :index
-      expect(assigns(:tutors)).to match_array([alice, bob])
+    before do
+      alice = Fabricate(:user, name: 'Alice')
+      bob = Fabricate(:user, name: 'Bob')
+      xhr :get, :index, format: :json
     end
+
+    subject(:results) { JSON.parse(response.body) }
+
+    it 'should 200' do
+      expect(resposne.status)
+    end
+
+    it 'should return two results' do
+      expect(results.size).to eq(2)
+    end
+
+    it 'should include "Alice" ' do
+      expect(results.map(&:name)).to match_array(['Alice', 'Bob'])
+    end
+
   end
 
 
