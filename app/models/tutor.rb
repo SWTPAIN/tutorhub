@@ -5,4 +5,8 @@ class Tutor < ActiveRecord::Base
   has_many :employers, through: :jobs
 
   validates_presence_of :description, :education_level, :institute, :gender
+
+
+
+
 end
