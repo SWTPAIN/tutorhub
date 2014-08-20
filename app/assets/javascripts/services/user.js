@@ -15,8 +15,7 @@ angular.module('services')
                 }
             }).success(function(response) {
                 if(response.success) {
-                    var user = response.data.user;
-                    user.auth_token = response.data.auth_token; // talk about this
+                    var user = response.user;
                     Auth.setCurrentUser(user);
                     d.resolve(user);
                 } else {
