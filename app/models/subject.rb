@@ -1,5 +1,4 @@
 class Subject < ActiveRecord::Base
 
-  belongs_to :category
-  
+  has_many :subject_tags
 end

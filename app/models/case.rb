@@ -1,5 +1,8 @@
 class Case < ActiveRecord::Base
+  include SubjectTaggable
+
   belongs_to :employer
+
   def self.text_search(query)
     rank = <<-RANK
       ts_rank(to_tsvector('english', title), plainto_tsquery(#{sanitize(query)})) +

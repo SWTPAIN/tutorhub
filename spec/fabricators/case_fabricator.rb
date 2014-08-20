@@ -1,0 +1,3 @@
+Fabricator(:case) do
+  
+end
