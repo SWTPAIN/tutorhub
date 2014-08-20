@@ -1,1 +1,1 @@
-json.array! @featured_tutors, partial: 'tutor', as: :tutor
+json.array! @tutors, partial: 'tutor', as: :tutor
