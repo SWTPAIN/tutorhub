@@ -7,7 +7,7 @@ angular.module('controllers')
         $scope.user = user;
       });
 
-      $scope.login = function (params) {
+      $scope.login = function () {
         User.login($scope.user).then(
           function (user){
             $location.path("/");

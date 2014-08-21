@@ -1,0 +1,12 @@
+<div class="login-prompt" ng-if="currentUser">
+  <a href="#" id="dlabel" role="button" data-toggle="dropdown" class="dropdown-toggle" data-target="#" >
+     Welcome {{currentUser.name}}
+    <b class="caret"></b>
+  </a>
+  <a ng-click="logout()">Logout</a>
+</div>
+
+<div ng-if="!currentUser" class="login-prompt">
+    <a id="sign_in_btn" href="#/login">Log in</a>
+    <a id="sign_up_btn" href="#/signup">Sign Up</a>
+</div>

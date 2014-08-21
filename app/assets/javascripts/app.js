@@ -5,6 +5,7 @@
   var Tutorhub = angular.module('Tutorhub', [
     'controllers',
     'services',
+    'directives',
     'templates',
     'ngRoute',
     'ngCookies'
@@ -48,5 +49,6 @@
 
   var controllers = angular.module('controllers', []);
   var services = angular.module('services', []);
+  var directives = angular.module('directives', []);
 
 })();

@@ -8,13 +8,14 @@ angular.module('services')
         this.login = function(params) {
             var d = $q.defer();
             $http({
-                url: '/users/sign_in',
+                url: '/sessions',
                 method: 'POST',
                 data: {
                     user: params
                 }
             }).success(function(response) {
                 if(response.success) {
+                    console.log('yooo')
                     var user = response.user;
                     Auth.setCurrentUser(user);
                     d.resolve(user);
