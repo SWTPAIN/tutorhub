@@ -1,7 +1,6 @@
 <div class="container col-sm-offset-4 col-sm-4">
   <h3>Please Login</h3>
-   <form name="loginForm" novalidate
-     ng-app="LoginApp" ng-controller="LoginController" ng-submit="login()">
+   <form name="loginForm" novalidate ng-submit="login()">
      <div class="form-group"
        ng-class="{'has-error': loginForm.email.$invalid && loginForm.email.$dirty}">
        <input

@@ -1,15 +1,17 @@
 'user strict'
 angular.module('controllers')
-  .controller("LoginController", ['$scope', '$location', 'User',
+  .controller("SignupController", ['$scope', '$location', 'User',
     function($scope, $location, User){
+      $scope.education_levels = ["High School", "HD/ASSO", "Bachelor", "Master", "Phd"] ; 
       $scope.user = {};
+      $scope.isTutor = true;
 
       User.currentUser().then(function(user){
         $scope.user = user;
       });
 
-      $scope.login = function () {
-        User.login($scope.user).then(
+      $scope.signup = function () {
+        User.singup($scope.user).then(
           function (user){
             $location.path("/");
           },
@@ -17,6 +19,10 @@ angular.module('controllers')
             $scope.error = err;
           }
         );
+      };
+
+      $scope.toggleSignupForm = function () {
+        $scope.isTutor = !$scope.isTutor;
       };
 
 }]);
