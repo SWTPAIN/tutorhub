@@ -1,7 +1,6 @@
 'use strict';
 
-angular.module('directives')
-  .directive('userPanel', function(){
+tutorhubDirectives.directive('userPanel', function(){
     return {
       restrict: 'AE',
       templateUrl: "userPanel.html",

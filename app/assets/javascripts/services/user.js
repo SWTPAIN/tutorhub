@@ -1,7 +1,6 @@
 'use strict';
 
-angular.module('services')
-  .service('User',
+tutorhubServices.service('User',
     function($rootScope, $q, $cookieStore, $http, Auth) {
         this.currentUser = Auth.currentUser;
 

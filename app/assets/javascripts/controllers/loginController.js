@@ -1,6 +1,6 @@
 'user strict'
-angular.module('controllers')
-  .controller("LoginController", ['$scope', '$location', 'User',
+
+tutorhubControllers.controller("LoginController", ['$scope', '$location', 'User',
     function($scope, $location, User){
       $scope.user = {};
 

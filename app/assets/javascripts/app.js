@@ -1,58 +1,54 @@
-(function(){
+'use strict';
 
-  'use strict';
+var tutorhubApp = angular.module('tutorhubApp', [
+  'tutorhubControllers',
+  'tutorhubServices',
+  'tutorhubDirectives',
+  'templates',
+  'ngRoute',
+  'ngCookies'
+]);
 
-  var Tutorhub = angular.module('Tutorhub', [
-    'controllers',
-    'services',
-    'directives',
-    'templates',
-    'ngRoute',
-    'ngCookies'
-  ]);
+tutorhubApp.config(['$routeProvider', function($routeProvider){
+  $routeProvider
+    .when('/', {
+      templateUrl: 'index.html',
+      controller: 'TutorListController'
+    })
+    .when('/login', {
+      templateUrl: 'login.html',
+      controller: 'LoginController'
+    })
+    .when('/signup', {
+      templateUrl: 'signup.html',
+      controller: 'SignupController'
+    })
+    .otherwise({
+      redirectTo: '/'
+    })      ;
+}]);
 
-  Tutorhub.config(['$routeProvider', function($routeProvider){
-    $routeProvider
-      .when('/', {
-        templateUrl: 'index.html',
-        controller: 'TutorsController'
-      })
-      .when('/login', {
-        templateUrl: 'login.html',
-        controller: 'LoginController'
-      })
-      .when('/signup', {
-        templateUrl: 'signup.html',
-        controller: 'SignupController'
-      })
-      .otherwise({
-        redirectTo: '/'
-      })      ;
-  }]);
+tutorhubApp.run(['$rootScope', '$location', 'Auth', function($rootScope, $location, Auth){
+  var publicRoutes = ['/', '/login', '/signup'];
 
-  Tutorhub.run(['$rootScope', '$location', 'Auth', function($rootScope, $location, Auth){
-    var publicRoutes = ['/', '/login', '/signup'];
-
-    var routeClean = function (route) {
-      return _.find(publicRoutes, function (noAuthRoute) {
-        return startsWith(noAuthRoute, route);
-      });
-    };
-
-    $rootScope.$on('routeChangeStart', function(event, next, current){
-      if (!routeClean($location.url()) && !Auth.isLoggedIn()){
-        $location.path('/login');
-      }
+  var routeClean = function (route) {
+    return _.find(publicRoutes, function (noAuthRoute) {
+      return startsWith(noAuthRoute, route);
     });
+  };
 
-    function startsWith(x, y){
-      return x.indexOf(y) === 0;
-    };
-  }]);
+  $rootScope.$on('routeChangeStart', function(event, next, current){
+    if (!routeClean($location.url()) && !Auth.isLoggedIn()){
+      $location.path('/login');
+    }
+  });
+
+  function startsWith(x, y){
+    return x.indexOf(y) === 0;
+  };
+}]);
 
 
-  var controllers = angular.module('controllers', []);
-  var services = angular.module('services', []);
-  var directives = angular.module('directives', []);
-
-})();
+var tutorhubControllers = angular.module('tutorhubControllers', []);
+var tutorhubServices = angular.module('tutorhubServices', []);
+var tutorhubDirectives = angular.module('tutorhubDirectives', []);

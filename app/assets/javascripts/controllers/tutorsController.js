@@ -1,4 +1,4 @@
-angular.module('controllers')
-  .controller("TutorsController", ['$scope', 'Tutors', function($scope, Tutors){
-    $scope.tutors = Tutors;
-}])
+
+tutorhubControllers.controller('TutorListController', ['$scope', 'Tutors', function($scope, Tutors){
+  $scope.tutors = Tutors;
+}]);

@@ -1,8 +1,8 @@
 'user strict'
-angular.module('controllers')
-  .controller("SignupController", ['$scope', '$location', 'User',
+
+tutorhubControllers.controller("SignupController", ['$scope', '$location', 'User',
     function($scope, $location, User){
-      $scope.education_levels = ["High School", "HD/ASSO", "Bachelor", "Master", "Phd"] ; 
+      $scope.education_levels = ["High School", "HD/ASSO", "Bachelor", "Master", "Phd"] ;
       $scope.user = {};
       $scope.isTutor = true;
 
