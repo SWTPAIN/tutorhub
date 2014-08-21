@@ -18,15 +18,19 @@ ActiveRecord::Schema.define(version: 20140819120021) do
 
   create_table "cases", force: true do |t|
     t.integer  "employer_id"
-    t.string   "title"
-    t.text     "description"
+    t.string   "subject"
     t.string   "grade"
     t.string   "location"
     t.string   "dow"
     t.string   "time"
     t.boolean  "close",       default: false
+    t.text     "description"
     t.datetime "created_at"
     t.datetime "updated_at"
+    t.string   "title"
+  end
+
+  create_table "categories", force: true do |t|
   end
 
   create_table "employers", force: true do |t|
@@ -46,15 +50,13 @@ ActiveRecord::Schema.define(version: 20140819120021) do
   end
 
   create_table "subjects", force: true do |t|
-    t.string "name"
-    t.string "category_name"
   end
 
   create_table "tutors", force: true do |t|
-    t.boolean "gender"
     t.text    "description"
     t.string  "education_level"
     t.string  "institute"
+    t.boolean "gender"
     t.boolean "featured",        default: false
   end
 
