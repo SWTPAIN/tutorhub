@@ -3,8 +3,8 @@ class SessionsController < ApplicationController
 
   def create
 
-    user = User.find_by(email: user_params[:email])
-    if user && user.authenticate(user_params[:password])
+    user = User.find_by(email: params[:email])
+    if user && user.authenticate(params[:password])
       session[:user_id] = user.id
       # render json: { user: user, authorized: true }
       render json: { user: user, success: true}
@@ -16,13 +16,5 @@ class SessionsController < ApplicationController
     end
 
   end
-
-
-  private
-
-  def user_params
-    params.require(:user).permit(:email, :password)
-  end
-
 
 end
