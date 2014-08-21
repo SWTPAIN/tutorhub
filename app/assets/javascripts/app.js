@@ -6,14 +6,15 @@ var tutorhubApp = angular.module('tutorhubApp', [
   'tutorhubDirectives',
   'templates',
   'ngRoute',
-  'ngCookies'
+  'ngCookies',
+  'ngResource'
 ]);
 
 tutorhubApp.config(['$routeProvider', function($routeProvider){
   $routeProvider
     .when('/', {
       templateUrl: 'index.html',
-      controller: 'TutorListController'
+      controller: 'TutorListFeaturedController'
     })
     .when('/login', {
       templateUrl: 'login.html',
