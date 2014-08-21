@@ -1,4 +1,6 @@
 
-tutorhubControllers.controller('TutorListController', ['$scope', 'Tutors', function($scope, Tutors){
-  $scope.tutors = Tutors;
+tutorhubControllers.controller('TutorListController', ['$scope', 'Tutor',
+  function($scope, Tutor){
+  // $scope.tutors = [{name: "alice", qualification: "HKU"}];
+    $scope.tutors = Tutor.query();
 }]);

@@ -6,6 +6,7 @@ var tutorhubApp = angular.module('tutorhubApp', [
   'tutorhubDirectives',
   'templates',
   'ngRoute',
+  'ngResource',
   'ngCookies'
 ]);
 
