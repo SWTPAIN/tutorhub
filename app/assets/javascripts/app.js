@@ -10,7 +10,7 @@ var tutorhubApp = angular.module('tutorhubApp', [
   'ngResource'
 ]);
 
-tutorhubApp.config(['$routeProvider', function($routeProvider){
+tutorhubApp.config(['$routeProvider','$httpProvider', function($routeProvider, $httpProvider){
   $routeProvider
     .when('/', {
       templateUrl: 'index.html',
@@ -26,7 +26,9 @@ tutorhubApp.config(['$routeProvider', function($routeProvider){
     })
     .otherwise({
       redirectTo: '/'
-    })      ;
+    });
+  $httpProvider.defaults.headers.common['X-CSRF-Token'] =
+    $('meta[name=csrf-token]').attr('content');
 }]);
 
 tutorhubApp.run(['$rootScope', '$location', 'Auth', function($rootScope, $location, Auth){

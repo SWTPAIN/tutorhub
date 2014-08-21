@@ -12,9 +12,7 @@ describe SessionsController do
 
         Fabricate(:tutor, name: 'alice', email: 'alice@example.com', password: 'password')
         xhr :post, :create, format: :json, user: { email: 'alice@example.com',
-                                                    password: "password"
-                                                   }
-
+                                                    password: "password" }
       end
 
       subject(:result) { JSON.parse(response.body) }
