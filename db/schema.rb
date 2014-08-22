@@ -18,19 +18,15 @@ ActiveRecord::Schema.define(version: 20140819120021) do
 
   create_table "cases", force: true do |t|
     t.integer  "employer_id"
-    t.string   "subject"
+    t.string   "title"
+    t.text     "description"
     t.string   "grade"
     t.string   "location"
     t.string   "dow"
     t.string   "time"
     t.boolean  "close",       default: false
-    t.text     "description"
     t.datetime "created_at"
     t.datetime "updated_at"
-    t.string   "title"
-  end
-
-  create_table "categories", force: true do |t|
   end
 
   create_table "employers", force: true do |t|
@@ -50,13 +46,15 @@ ActiveRecord::Schema.define(version: 20140819120021) do
   end
 
   create_table "subjects", force: true do |t|
+    t.string "name"
+    t.string "category_name"
   end
 
   create_table "tutors", force: true do |t|
+    t.boolean "gender"
     t.text    "description"
     t.string  "education_level"
     t.string  "institute"
-    t.boolean "gender"
     t.boolean "featured",        default: false
   end
 
@@ -69,7 +67,7 @@ ActiveRecord::Schema.define(version: 20140819120021) do
     t.integer  "userable_id"
     t.string   "userable_type"
   end
-
+  
   add_index "users", ["userable_id", "userable_type"], name: "index_users_on_userable_id_and_userable_type", using: :btree
 
 end

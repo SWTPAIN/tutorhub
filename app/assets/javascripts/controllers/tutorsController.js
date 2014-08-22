@@ -1,4 +1,3 @@
 
-tutorhubControllers.controller('TutorListFeaturedController', ['$scope', 'Tutors', function($scope, Tutors){
-  $scope.tutors = Tutors;
+tutorhubControllers.controller('TutorListFeaturedController', ['$scope', function($scope, Tutors){
 }]);

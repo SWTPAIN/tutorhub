@@ -18,5 +18,4 @@ tutorhubControllers.controller("LoginController", ['$scope', '$location', 'User'
           }
         );
       };
-
 }]);

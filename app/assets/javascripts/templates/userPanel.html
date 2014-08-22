@@ -3,7 +3,7 @@
      Welcome {{currentUser.name}}
     <b class="caret"></b>
   </a>
-  <a ng-click="logout()">Logout</a>
+  <a ng-click="logout(currentUser.id)">Logout</a>
 </div>
 
 <div ng-if="!currentUser" class="login-prompt">
