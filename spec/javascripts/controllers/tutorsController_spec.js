@@ -1,4 +1,4 @@
-describe('TutorListController', function () {
+describe('TutorListFeaturedController', function () {
   var scope, ctrl, $httpBackend;
 
 
@@ -12,7 +12,7 @@ describe('TutorListController', function () {
           {name: 'Bob', qualification: 'CU'}
         ]);
     scope = $rootScope.$new();
-    ctrl = $controller('TutorListController', {$scope: scope});
+    ctrl = $controller('TutorListFeaturedController', {$scope: scope});
   }));
 
   afterEach(function(){

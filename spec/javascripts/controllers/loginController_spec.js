@@ -22,8 +22,9 @@ describe('LoginController', function () {
   }));
 
   //Inject the fake User factory
-  beforeEach(inject(function ($rootScope, $controller, $q){
+  beforeEach(inject(function ($rootScope, $location, $controller, $q){
     scope = $rootScope.$new();
+    location = $location
     q = $q;
     controller = $controller('LoginController', {
       $scope: scope,
@@ -40,7 +41,7 @@ describe('LoginController', function () {
       };
       scope.login();
       scope.$apply();
-      expect(location.path.calledWith('/')).to.be.ok();
+      expect(location.path()).toBe('/');
     });
   })
 });
