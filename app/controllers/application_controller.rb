@@ -1,6 +1,9 @@
 class ApplicationController < ActionController::Base
   # Prevent CSRF attacks by raising an exception.
   # For APIs, you may want to use :null_session instead.
+
+  # Turn on request forgery protection
+
   protect_from_forgery with: :exception
   after_filter :set_csrf_cookie_for_ng
 

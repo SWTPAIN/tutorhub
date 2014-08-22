@@ -15,8 +15,8 @@ tutorhubDirectives.directive('userPanel', function(){
              $scope.currentUser = currentUser;
           });
 
-          $scope.logout = function(){
-              User.logout().then(function(){
+          $scope.logout = function(id){
+              User.logout(id).then(function(){
                   $scope.currentUser = null;
               });
           };
