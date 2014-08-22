@@ -3,7 +3,6 @@ describe('TutorListController', function () {
 
 
   beforeEach(module('tutorhubApp'));
-  // beforeEach(module('phonecatServices'));
 
   beforeEach(inject(function(_$httpBackend_, $rootScope, $controller) {
     $httpBackend = _$httpBackend_;
@@ -15,6 +14,11 @@ describe('TutorListController', function () {
     scope = $rootScope.$new();
     ctrl = $controller('TutorListController', {$scope: scope});
   }));
+
+  afterEach(function(){
+    $httpBackend.verifyNoOutstandingExpectation();
+    $httpBackend.verifyNoOutstandingRequest();
+  });
 
   it('should create "tutors" model with 2 tutors fetched from xhr', function() {
     expect(scope.tutors).toEqualData ([]);
