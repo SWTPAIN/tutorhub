@@ -6,22 +6,29 @@ tutorhubControllers.controller("SignupController", ['$scope', '$location', 'User
       $scope.user = {};
       $scope.isTutor = true;
 
+
       User.currentUser().then(function(user){
         $scope.user = user;
       });
 
-      $scope.signup = function () {
-        User.singup($scope.user).then(
-          function (user){
-            $location.path("/");
-          },
-          function (error) {
-            $scope.error = error;
-          }
-        );
-      };
+    $scope.signup = function () {
+      User.singup($scope.user).then(
+        function (user){
+          $location.path("/");
+        },
+        function (error) {
+          $scope.error = error;
+        }
+      );
+    };
 
-      $scope.toggleSignupForm = function () {
-        $scope.isTutor = !$scope.isTutor;
+    $scope.setAs = function(role) {
+      if (role == "Tutor") {
+        $scope.isTutor = true;
+        $scope.isEmployer = false;
+      } else if (role == "Employer") {
+        $scope.isTutor = false;
+        $scope.isEmployer = true;
       };
+    };
 }]);
