@@ -7,7 +7,6 @@ tutorhubControllers.controller("LoginController", ['$scope', '$location', 'User'
       // User.currentUser().then(function(user){
       //   $scope.user = user;
       // });
-
       $scope.login = function () {
         User.login($scope.user).then(
           function (user){

@@ -17,32 +17,31 @@ tutorhubControllers.controller("SignupController", ['$scope', '$location', 'User
       $scope.user = user;
     });
 
-  $scope.setAs = function(role) {
-    if (role == "Tutor") {
-      $scope.isTutor = true;
-      $scope.isEmployer = false;
-    } else if (role == "Employer") {
-      $scope.isTutor = false;
-      $scope.isEmployer = true;
+    $scope.setAs = function(role) {
+      if (role == "Tutor") {
+        $scope.isTutor = true;
+        $scope.isEmployer = false;
+      } else if (role == "Employer") {
+        $scope.isTutor = false;
+        $scope.isEmployer = true;
+      };
     };
-  };
 
-  $scope.signup = function () {
-    User.singup($scope.user).then(
-      function (user){
-        $location.path("/");
-      },
-      function (error) {
-        $scope.error = error;
+    $scope.signup = function () {
+      User.singup($scope.user).then(
+        function (user){
+          $location.path("/");
+        },
+        function (error) {
+          $scope.error = error;
+        }
+      );
+    };
+
+    angular.forEach( $scope.subjectsTaught, function( value, key ) {
+      if ( value.ticked === true ) {
+          /* do your stuff here */
+
       }
-    );
-  };
-
-  angular.forEach( $scope.subjectsTaught, function( value, key ) {
-    if ( value.ticked === true ) {
-        /* do your stuff here */
-      
-    }
-  }
-
-}]);
+    });
+  }]);
