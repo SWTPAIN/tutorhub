@@ -5,12 +5,12 @@
   {{signupForm.name.$invalid}} -->
   <section>
     <button class="btn btn-primary"
-      value="isTutor" title="isTutor" ng-click="setAs('Tutor')">
+      value="isTutor" title="isTutor" ng-click="setAs('Tutor')" ng-show="isEmployer">
       <span>I'm a tutor.</span>
     </button>
 
     <button class="btn btn-primary"
-      value="isTutor" title="isTutor" ng-click="setAs('Employer')">
+      value="isTutor" title="isTutor" ng-click="setAs('Employer')" ng-show="isTutor">
       <span>I need a tutor.</span>
     </button>
   </section>
