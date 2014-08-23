@@ -1,6 +1,7 @@
 Rails.application.routes.draw do
   root 'pages#index'
 
-  resources :tutors, only: [:index, :create]
+  resources :users, only: [:create]
+  resources :tutors, only: [:index]
   resources :sessions, only: [:create, :destroy]
 end

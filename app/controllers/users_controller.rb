@@ -1,12 +1,8 @@
-
-class TutorsController < ApplicationController
-
-  def index
-    @tutors = Tutor.where(featured: true)
-
-  end
+class UsersController < ApplicationController
 
   def create
+    binding.pry
+    #creating Tutor or Employer depends on incoming user json object
     @tutor = Tutor.new(tutor_params)
     if @tutor.save
       render :show, status: 201
@@ -14,8 +10,6 @@ class TutorsController < ApplicationController
       render json: {message: 'Invalid Input'}, status: 400
     end
   end
-
-  private
 
   def tutor_params
     params.require(:tutor).permit(:email, :name, :password, :password_confirmation, :description,
