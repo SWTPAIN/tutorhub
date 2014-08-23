@@ -7,7 +7,8 @@ var tutorhubApp = angular.module('tutorhubApp', [
   'templates',
   'ngRoute',
   'ngResource',
-  'ngCookies'
+  'ngCookies',
+  'multi-select'
 ]);
 
 tutorhubApp.config(['$routeProvider','$httpProvider', function($routeProvider, $httpProvider){

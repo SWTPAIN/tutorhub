@@ -1,4 +1,3 @@
-
 <div class="container col-sm-offset-4 col-sm-4">
   <h3>Sign Up Now</h3>
   <!-- {{signupForm.name}}
@@ -6,12 +5,12 @@
   <section>
     <button class="btn btn-primary"
             value="isTutor" title="isTutor" ng-click="setAs('Tutor')" ng-show="isEmployer">
-      <span>I'm a tutor.</span>
+      <span>I'm a tutor</span>
     </button>
 
     <button class="btn btn-primary"
             value="isEmployer" title="isEmployer" ng-click="setAs('Employer')" ng-show="isTutor">
-      <span>I need a tutor.</span>
+      <span>I need a tutor</span>
     </button>
   </section>
   </br>
@@ -68,7 +67,24 @@
        Male <input type="radio" name="gender" value="M" ng-model="survey.gender"   required/>
        Female <input type="radio" name="gender" value="F" ng-model="survey.gender" required/>
       </div>
+      <div class="form-group">
+        <span>Subjects Taught</span>
+        <div
+             multi-select
+             input-model="subjectsTaught"
+             button-label="icon name"
+             item-label="icon name maker"
+             tick-property="ticked">
+        </div>
+      </div>
 
+      <div class="form-group"
+           ng-class="{'has-error': signupForm.education_level.$invalid && signupForm.education_level.$dirty}">
+        <select ng-model="user.education_level"
+                ng-options="education_level for education_level in education_levels">
+         <option value="" default selected>Education Level</option>
+        </select>
+      </div>
       <div class="form-group"
            ng-class="{'has-error': signupForm.description.$invalid && signupForm.description.$dirty}">
         <textarea class="form-control"
@@ -79,18 +95,9 @@
                   ng-minlength="40"
                   ng-model="user.description" />
       </div>
-      <div class="form-group"
-           ng-class="{'has-error': signupForm.education_level.$invalid && signupForm.education_level.$dirty}">
-        <select ng-model="user.education_level"
-                ng-options="education_level for education_level in education_levels">
-         <option value="" default selected>Education Level</option>
-        </select>
-      </div>
     </div>
-    <!-- t.text    "description"
-  t.string  "education_level"
-  t.string  "institute"
-  t.boolean "gender" -->
+
+
 
     <div class="form-group">
       <button type="submit" class="btn btn-primary pull-right"
@@ -98,5 +105,6 @@
         <span>Sign Up</span>
       </button>
     </div>
+
   </form>
 </div>

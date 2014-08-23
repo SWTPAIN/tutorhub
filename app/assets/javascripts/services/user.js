@@ -11,7 +11,6 @@ tutorhubServices.service('User',function($rootScope, $q, $cookieStore, $http, Au
       data: {user: params}
     }).success(function(response) {
       if(response.success) {
-        console.log('yooo')
         var user = response.user;
         Auth.setCurrentUser(user);
         d.resolve(user);

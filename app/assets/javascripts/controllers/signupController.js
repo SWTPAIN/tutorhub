@@ -2,10 +2,16 @@
 
 tutorhubControllers.controller("SignupController", ['$scope', '$location', 'User',
   function($scope, $location, User){
-    $scope.education_levels = ["High School", "HD/ASSO", "Bachelor", "Master", "Phd"];
     $scope.user = {};
     $scope.isTutor = true;
-
+    $scope.education_levels = ["High School", "HD/ASSO", "Bachelor", "Master", "Phd"];
+    $scope.subjectsTaught = [
+      { name: "English", ticked: false },
+      { name: "History", ticked: false },
+      { name: "A Math", ticked: false },
+      { name: "Chinese Language", ticked: false },
+      { name: "Physic", ticked: false }
+    ];
 
     User.currentUser().then(function(user){
       $scope.user = user;
@@ -31,4 +37,12 @@ tutorhubControllers.controller("SignupController", ['$scope', '$location', 'User
       }
     );
   };
+
+  angular.forEach( $scope.subjectsTaught, function( value, key ) {
+    if ( value.ticked === true ) {
+        /* do your stuff here */
+      
+    }
+  }
+
 }]);
