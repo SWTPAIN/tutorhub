@@ -1,12 +1,12 @@
 'use strict';
 
-tutorhubDirectives.directive('userPanel', function(){
+tutorhubDirectives.directive('userPanel', ['User', function(User){
     return {
       restrict: 'AE',
       templateUrl: "userPanel.html",
       // replace: true,
       // transclude: true,
-      controller: function($scope, User, $rootScope){
+      controller: function($scope,  $rootScope){
           User.currentUser().then(function(user){
                 $scope.currentUser = user;
           });
@@ -22,4 +22,4 @@ tutorhubDirectives.directive('userPanel', function(){
           };
        }
     };
-});
+}]);

@@ -16,7 +16,7 @@ q<div id="showcase" class="well">
         </tr>
     </thead>
     <tbody>
-      <tr ng-repeat="tutor in tutors.all | filter:search">
+      <tr ng-repeat="tutor in tutors | filter:search">
           <td>{{tutor.name}}</td>
           <td>{{tutor.qualification}}</td>
       </tr>

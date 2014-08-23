@@ -1,34 +1,33 @@
-describe('Tutor Controllers', function() {
+describe('TutorListFeaturedController', function () {
+  var scope, ctrl, $httpBackend;
 
-  beforeEach(function(){
-    this.addMatchers({
-      toEqualData: function(expected) {
-        return angular.equals(this.actual, expected);
-      }
-    });
-  });
 
   beforeEach(module('tutorhubApp'));
-  beforeEach(module('tutorhubServices'));
 
-  describe('TutorListFeaturedController', function() {
-    var $scope, ctrl, _$httpBackend_;
+  beforeEach(inject(function(_$httpBackend_, $rootScope, $controller) {
+    $httpBackend = _$httpBackend_;
+    $httpBackend.expectGET('tutors.json').
+        respond([
+          {name: 'Alice', qualification: 'HKU'},
+          {name: 'Bob', qualification: 'CU'}
+        ]);
+    scope = $rootScope.$new();
+    ctrl = $controller('TutorListFeaturedController', {$scope: scope});
+  }));
 
-    beforeEach(inject(fucntion(_$httpBackend_, $rootScope, ctrl){
-      $httpBackend = _$httpBackend_;
-      $httpbackend.expectGET('tutors/tutors.json').
-        respond([{name: 'Tutor1'}, {name: 'Tutor2'},);
-      scope = $rootScope.$new();
-      ctrl = $controller('TutorListFeaturedController', ($scope: scope))
-    }));
+  afterEach(function(){
+    $httpBackend.verifyNoOutstandingExpectation();
+    $httpBackend.verifyNoOutstandingRequest();
+  });
 
-    it('should create "tutos" model with 2 tutor fetched from xhr', funcion(){
-      expect($scope.toturs).toEqualData([]);
-      $httpBackend.flush();
+  it('should create "tutors" model with 2 tutors fetched from xhr', function() {
+    expect(scope.tutors).toEqualData ([]);
+    $httpBackend.flush();
 
-      expect($scope.toturs).toEqualData([
-        {name: 'Tutor1'}, {name: 'Tutor2'}]);
-    });
+    expect(scope.tutors).toEqualData([
+      {name: 'Alice', qualification: 'HKU'},
+      {name: 'Bob', qualification: 'CU'}
+    ]);
 
   });
 });
