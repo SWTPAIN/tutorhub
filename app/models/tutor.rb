@@ -19,7 +19,7 @@ class Tutor < ActiveRecord::Base
   end
 
   def subjects_taught
-
+    
   end
 
 end
