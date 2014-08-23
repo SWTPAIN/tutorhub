@@ -15,8 +15,8 @@ tutorhubControllers.controller("SignupController", ['$scope', '$location', 'User
           function (user){
             $location.path("/");
           },
-          function (err) {
-            $scope.error = err;
+          function (error) {
+            $scope.error = error;
           }
         );
       };
@@ -24,5 +24,4 @@ tutorhubControllers.controller("SignupController", ['$scope', '$location', 'User
       $scope.toggleSignupForm = function () {
         $scope.isTutor = !$scope.isTutor;
       };
-
 }]);

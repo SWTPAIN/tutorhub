@@ -1,61 +1,64 @@
 <div class="container col-sm-offset-4 col-sm-4">
   <h3>Sign Up Now</h3>
-  {{signupForm.name}}
-  {{signupForm.name.$invalid}}
-
-  <a ng-click="toggleSignupForm()"><span ng-show="isTutor">I'm a tutor.</span><span ng-hide="isTutor">I need a tutor.</span></a>
+  <!-- {{signupForm.name}}
+  {{signupForm.name.$invalid}} -->
+  
+  <a ng-click="toggleSignupForm()">
+    <span ng-show="isTutor">I need a tutor.</span>
+    <span ng-hide="isTutor">I'm a tutor.</span>
+  </a>
 
   <form name="signupForm" novalidate ng-hide="isTutor" ng-submit="signup()">
-  <div class="form-group"
-   ng-class="{'has-error': signupForm.name.$invalid && signupForm.name.$dirty}">
-   <input
-    class="form-control"
-    name="name"
-    type="text"
-    placeholder="Your Name"
-    required
-    ng-minlength="4"
-    ng-model="user.name" />
-  </div>
-  <div class="form-group"
-   ng-class="{'has-error': signupForm.email.$invalid && signupForm.email.$dirty}">
-   <input
-    class="form-control"
-    name="email"
-    type="email"
-    placeholder="Email"
-    required
-    ng-minlength="4"
-    ng-model="user.email" />
-  </div>
-  <div class="form-group"
-   ng-class="{'has-error': signupForm.password.$invalid && signupForm.password.$dirty}">
-   <input class="form-control"
-    name="password"
-    type="password"
-    placeholder="Password"
-    required
-    ng-minlength="6"
-    ng-model="user.password" />
-  </div>
-  <div class="form-group"
-    ng-class="{'has-error': signupForm.password_confirmation.$invalid   &&
-                signupForm.password_confirmation.$dirty}">
-    <input class="form-control"
-     name="password_confirmation"
-     type="password"
-     placeholder="Confirm Your Password"
-     required
-     ng-minlength="6"
-     pw-check
-     ng-model="user.password_confirmation" />
-  </div>
-     <div class="form-group">
-         <button type="submit" class="btn btn-primary pull-right"
-           value="Login" title="Login" ng-disabled="!signupForm.$valid">
-           <span>Login</span>
-         </button>
-     </div>
+    <div class="form-group"
+     ng-class="{'has-error': signupForm.name.$invalid && signupForm.name.$dirty}">
+      <input
+        class="form-control"
+        name="name"
+        type="text"
+        placeholder="Your Name"
+        required
+        ng-minlength="4"
+        ng-model="user.name" />
+    </div>
+    <div class="form-group"
+     ng-class="{'has-error': signupForm.email.$invalid && signupForm.email.$dirty}">
+      <input
+        class="form-control"
+        name="email"
+        type="email"
+        placeholder="Email"
+        required
+        ng-minlength="4"
+        ng-model="user.email" />
+    </div>
+    <div class="form-group"
+     ng-class="{'has-error': signupForm.password.$invalid && signupForm.password.$dirty}">
+      <input class="form-control"
+        name="password"
+        type="password"
+        placeholder="Password"
+        required
+        ng-minlength="6"
+        ng-model="user.password" />
+    </div>
+    <div class="form-group"
+      ng-class="{'has-error': signupForm.password_confirmation.$invalid   &&
+                  signupForm.password_confirmation.$dirty}">
+      <input class="form-control"
+       name="password_confirmation"
+       type="password"
+       placeholder="Confirm Your Password"
+       required
+       ng-minlength="6"
+       pw-check
+       ng-model="user.password_confirmation" />
+    </div>
+    <div class="form-group">
+      <button type="submit" class="btn btn-primary pull-right"
+         value="Login" title="Login" ng-disabled="!signupForm.$valid">
+        <span>Login</span>
+      </button>
+    </div>
    </form>
 
   <form name="signupForm" novalidate ng-show="isTutor" ng-submit="signup()">

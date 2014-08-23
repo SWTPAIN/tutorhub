@@ -25,5 +25,5 @@ tutorhubServices.service("Auth", ['$rootScope', '$q', '$cookieStore',
           d.resolve(null);
         }
         return d.promise;
-    };
-}]);
+      };
+  }]);

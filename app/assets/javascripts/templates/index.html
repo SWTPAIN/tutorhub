@@ -1,4 +1,4 @@
-q<div id="showcase" class="well">
+<div id="showcase" class="well">
   <div class="container">
     <h1>How it works</h1>
     <p>Sign Up</p>
@@ -10,15 +10,15 @@ q<div id="showcase" class="well">
   <input type="text" ng-model="search">
   <table class="table">
     <thead>
-        <tr>
-            <th>Name</th>
-            <th>Qualification</th>
-        </tr>
+      <tr>
+        <th>Name</th>
+        <th>Qualification</th>
+      </tr>
     </thead>
     <tbody>
       <tr ng-repeat="tutor in tutors | filter:search">
-          <td>{{tutor.name}}</td>
-          <td>{{tutor.qualification}}</td>
+        <td>{{tutor.name}}</td>
+        <td>{{tutor.qualification}}</td>
       </tr>
     </tbody>
   </table>
