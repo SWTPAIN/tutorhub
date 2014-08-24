@@ -3,6 +3,9 @@ class UsersController < ApplicationController
   def create
     binding.pry
     #creating Tutor or Employer depends on incoming user json object
+
+     #params[:user].keys.include?("subjectTaught")
+
     @tutor = Tutor.new(tutor_params)
     if @tutor.save
       render :show, status: 201

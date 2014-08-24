@@ -28,7 +28,7 @@ tutorhubControllers.controller("SignupController", ['$scope', '$location', 'User
     };
 
     $scope.signup = function () {
-      User.singup($scope.user).then(
+      User.signup($scope.user).then(
         function (user){
           $location.path("/");
         },
