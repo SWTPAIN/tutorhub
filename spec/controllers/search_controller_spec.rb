@@ -1,4 +1,4 @@
-require 'spec_helper'
+require 'rails_helper'
 
 describe SearchController do
 
@@ -8,7 +8,7 @@ describe SearchController do
 
 
     it "redirects to " do
-      expect(response).to redirect_to 
+      expect(response).to redirect_to
     end
   end
 

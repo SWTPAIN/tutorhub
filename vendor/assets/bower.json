@@ -6,6 +6,7 @@
     "angular-cookies": "latest",
     "angular-resource": "latest",
     "angular-mocks": "latest",
-    "bootstrap-sass-official": "latest"
+    "bootstrap-sass-official": "latest",
+    "angular-multi-select": "latest"
   }
 }

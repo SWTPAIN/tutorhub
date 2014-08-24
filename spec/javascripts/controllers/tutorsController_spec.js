@@ -6,7 +6,7 @@ describe('TutorListFeaturedController', function () {
 
   beforeEach(inject(function(_$httpBackend_, $rootScope, $controller) {
     $httpBackend = _$httpBackend_;
-    $httpBackend.expectGET('tutors.json').
+    $httpBackend.expectGET('featured_tutors.json').
         respond([
           {name: 'Alice', qualification: 'HKU'},
           {name: 'Bob', qualification: 'CU'}

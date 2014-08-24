@@ -25,6 +25,14 @@ tutorhubApp.config(['$routeProvider','$httpProvider', function($routeProvider, $
       templateUrl: 'signup.html',
       controller: 'SignupController'
     })
+    .when('/tutors',{
+      templateUrl: 'tutors.html',
+      controller: 'TutorListController'
+    })
+    .when('/tutors/:tutorId', {
+      templateUrl: 'tutor-detail.html',
+      controller: 'TutorDetailController'
+    })
     .otherwise({
       redirectTo: '/'
     });

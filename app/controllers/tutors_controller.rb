@@ -2,24 +2,11 @@
 class TutorsController < ApplicationController
 
   def index
-    @tutors = Tutor.where(featured: true)
-
+    @tutors =Tutor.all
   end
 
-  def create
-    @tutor = Tutor.new(tutor_params)
-    if @tutor.save
-      render :show, status: 201
-    else
-      render json: {message: 'Invalid Input'}, status: 400
-    end
-  end
-
-  private
-
-  def tutor_params
-    params.require(:tutor).permit(:email, :name, :password, :password_confirmation, :description,
-                                  :education_level, :institute, :gender)
+  def featured_tutors
+    @featured_tutors = Tutor.where(featured: true)
   end
 
 end

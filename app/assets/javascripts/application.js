@@ -17,4 +17,5 @@
 //= require angular-resource
 //= require angular-cookies
 //= require angular-rails-templates
+//= require angular-multi-select
 //= require_tree .

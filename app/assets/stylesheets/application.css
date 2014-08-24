@@ -12,5 +12,6 @@
  *
  *= require_tree .
  *= require bootstrap-sass-official/assets/stylesheets/bootstrap.css
+ *= require angular-multi-select/angular-multi-select.css
  *= require_self
  */

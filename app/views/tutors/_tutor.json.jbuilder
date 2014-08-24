@@ -1,1 +1,1 @@
-json.(tutor, :id, :name, :gender,:institute, :education_level, :description)
+json.(tutor, :id, :name, :gender, :institute, :education_level, :description)
