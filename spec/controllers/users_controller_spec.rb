@@ -49,11 +49,22 @@ describe UsersController do
       context 'with valid input' do
 
         before do
+
+          all_subjects = { English: ["English", "English Literature"],
+            Chinese: ["Chinese", "Chinese Literature"]
+          }
+
+          all_subjects.each do |k, v|
+            v.each do |subject|
+              Subject.create(name: subject, category_name: k)
+            end
+          end
+
           xhr :post, :create, format: :json, user: { name: "Alice",
                                                       email: 'alice@exmaple.com',
                                                       password: "password",
                                                       password_confirmation: "password",
-                                                      subjects: ["English", "History"],
+                                                      subjects: ["English", "Chinese"],
                                                       description: 'I am a good teacher',
                                                       education_level: 'Bachelor',
                                                       institute: 'HKU'
@@ -67,7 +78,7 @@ describe UsersController do
         it 'should create a tutor' do
           expect(Tutor.last.name).to eq("Alice")
           expect(Tutor.last.institute).to eq("HKU")
-          expect(Tutor.last.subject_tags).to match_array(["English", "History"])
+          expect(Tutor.last.subjects).to match_array(["English", "Chinese"])
         end
 
       end
@@ -75,10 +86,11 @@ describe UsersController do
       context 'with invalid input' do
 
         before do
-          xhr :post, :create, format: :json, tutor: { name: "Alice",
+          xhr :post, :create, format: :json, user: { name: "Alice",
                                                       password: "password",
-                                                      password_confirmation: "password"
-                                                     }
+                                                      password_confirmation: "password",
+                                                      subjects: ["English", "Chinese"]
+                                                   }
         end
 
         it 'should 400' do

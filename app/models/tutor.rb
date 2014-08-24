@@ -18,12 +18,16 @@ class Tutor < ActiveRecord::Base
     update_attribute(:featured, false)
   end
 
-  def set_subjects(subjects)
+  def subjects=(subjects)
     subjects.each do |subject|
       if subject = Subject.find_by(name: subject)
-        self.subject_tags.create(subject: subject)
+        subject_tags.create(subject: subject)
       end
     end
+  end
+
+  def subjects
+    subject_tags.map(&:subject).map(&:name)
   end
 
 end

@@ -6,7 +6,7 @@ class UsersController < ApplicationController
 
       @tutor = Tutor.new(tutor_params)
       if @tutor.save
-        @tutor.set_subjects(params[:user][:subjects])
+        @tutor.subjects = (params[:user][:subjects])
         render json: { success: true, user: @tutor }, status: 201
       else
         render json: { success: false, message: 'Invalid Input'}, status: 400
