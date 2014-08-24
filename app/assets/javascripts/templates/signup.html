@@ -14,8 +14,11 @@
     </button>
   </section>
   </br>
+  <span>$scope.user: {{user}}</span>
+
   <!-- Base Sign Up Form -->
-  <form name="signupForm" novalidate ng-submit="signup()">
+
+  <form name="signupForm" role="form" novalidate ng-submit="signup()">
     <div class="form-group"
          ng-class="{'has-error': signupForm.name.$invalid && signupForm.name.$dirty}">
       <input
@@ -38,6 +41,7 @@
         ng-minlength="4"
         ng-model="user.email" />
     </div>
+
     <div class="form-group"
          ng-class="{'has-error': signupForm.password.$invalid && signupForm.password.$dirty}">
       <input class="form-control"
@@ -49,7 +53,7 @@
         ng-model="user.password" />
     </div>
     <div class="form-group"
-      ng-class="{'has-error': signupForm.password_confirmation.$invalid   &&
+          ng-class="{'has-error': signupForm.password_confirmation.$invalid   &&
                   signupForm.password_confirmation.$dirty}">
       <input class="form-control"
        name="password_confirmation"
@@ -57,8 +61,9 @@
        placeholder="Confirm Your Password"
        required
        ng-minlength="6"
-       pw-check="user.password"
-       ng-model="user.password_confirmation" />
+       pw-check
+       ng-model="user.password_confirmation"
+       ng-check="user.password" />
     </div>
 
     <!--Tutor profile -->
@@ -70,11 +75,13 @@
       <div class="form-group">
         <span>Subjects Taught</span>
         <div
-             multi-select
-             input-model="subjectsTaught"
-             button-label="icon name"
-             item-label="icon name maker"
-             tick-property="ticked">
+          multi-select
+          input-model="subjectsTaught"
+          output-model="user.subjectTaught"
+          button-label="icon name"
+          item-label="icon name maker"
+          helper-elements="all reset"
+          tick-property="ticked">
         </div>
       </div>
 
