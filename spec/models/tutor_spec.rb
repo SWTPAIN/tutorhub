@@ -8,19 +8,6 @@ RSpec.describe Tutor, :type => :model do
   it { should have_many(:jobs) }
   it { should have_many(:employers)}
 
-  describe "has many subject_tags" do
-    it "can create subject_tags" do
-      tutor = Fabricate(:tutor)
-      subject = Fabricate(:subject)
-      binding.pry
-      tutor.subject_tags.create(subject: subject)
-      expect(tutor.reload.subject_tags).to eq([subject])
-
-    end
-
-  end
-
-
   describe "#set_featured" do
     it "set user to be featured" do
       tutor = Fabricate(:tutor, featured: false )
@@ -38,5 +25,49 @@ RSpec.describe Tutor, :type => :model do
     end
   end
 
+
+  describe '#subjects' do
+    it 'returns the array of subjects names when the user has subjects' do
+
+      tutor = Fabricate(:tutor)
+      subject1 = Subject.create(name: "M1", category_name: "Mathemtics")
+      subject2 = Subject.create(name: "M2", category_name: "Mathemtics")
+      subject3 = Subject.create(name: "English Literature", category_name: "English")
+      tutor.subject_tags.create(subject: subject1)
+      tutor.subject_tags.create(subject: subject2)
+      tutor.subject_tags.create(subject: subject3)
+
+      expect(tutor.subjects).to match_array(["M1", "M2", "English Literature"])
+
+    end
+
+    it 'return nil when the user has no subject' do
+      tutor = Fabricate(:tutor)
+
+      expect(tutor.subjects).to be_empty
+
+    end
+  end
+
+  describe '#subjects=' do
+    it 'sets the user subjects given array of subject names' do
+
+      tutor = Fabricate(:tutor)
+      subject1 = Subject.create(name: "M1", category_name: "Mathemtics")
+      subject2 = Subject.create(name: "M2", category_name: "Mathemtics")
+      subject3 = Subject.create(name: "English Literature", category_name: "English")
+
+      tutor.subjects = ["M1", "M2", "English Literature"]
+      expect(tutor.subjects).to match_array(["M1", "M2", "English Literature"])
+
+    end
+
+    it 'does not set the tutor subject when the array of subject name is not present' do
+      tutor = Fabricate(:tutor)
+
+      tutor.subjects = ["M1", "M2", "English Literature"]
+      expect(tutor.subjects).to be_empty
+    end
+  end
 
 end
