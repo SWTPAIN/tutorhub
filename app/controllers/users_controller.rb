@@ -1,22 +1,34 @@
 class UsersController < ApplicationController
 
   def create
-    binding.pry
     #creating Tutor or Employer depends on incoming user json object
-
-     #params[:user].keys.include?("subjectTaught")
-
-    @tutor = Tutor.new(tutor_params)
-    if @tutor.save
-      render :show, status: 201
+    binding.pry
+    if params[:user][:subjectTaught]
+      @tutor = Tutor.new(tutor_params)
+      binding.pry
+      if @tutor.save
+        render json: { success: true, user: @tutor }, status: 201
+      else
+        render json: { success: false, message: 'Invalid Input'}, status: 400
+      end
     else
-      render json: {message: 'Invalid Input'}, status: 400
+      @employer = Employer.new(employer_params)
+      if @employer.save
+        render json: { success: true, user: @employer }, status: 201
+      else
+        render json: { success: false, message: 'Invalid Input'}, status: 400
+      end
     end
   end
+
+  private
 
   def tutor_params
     params.require(:tutor).permit(:email, :name, :password, :password_confirmation, :description,
                                   :education_level, :institute, :gender)
   end
 
+  def employer_params
+    params.require(:employer).permit(:email, :name, :password, :password_confirmation)
+  end
 end
