@@ -15,7 +15,7 @@
   </section>
   </br>
   <span>$scope.user: {{user}}</span>
-
+  <span>is tutor:{{isTutor}}</span>
   <!-- Base Sign Up Form -->
 
   <form name="signupForm" role="form" novalidate ng-submit="signup()">
@@ -61,33 +61,32 @@
        placeholder="Confirm Your Password"
        required
        ng-minlength="6"
-       pw-check
        ng-model="user.password_confirmation"
-       ng-check="user.password" />
+       pw-check="user.password" />
     </div>
 
     <!--Tutor profile -->
-    <div ng-show="isTutor">
+    <div ng-if="isTutor">
       <div class="form-group" >
-       Male <input type="radio" name="gender" value="M" ng-model="survey.gender"   required/>
-       Female <input type="radio" name="gender" value="F" ng-model="survey.gender" required/>
+       Male <input type="radio" name="gender" value="M" ng-model="$parent.user.gender"/>
+       Female <input type="radio" name="gender" value="F" ng-model="$parent.user.gender"/>
       </div>
       <div class="form-group">
         <span>Subjects Taught</span>
         <div
           multi-select
           input-model="subjectsTaught"
-          output-model="user.subjectTaught"
+          output-model="$parent.user.subjectTaught"
           button-label="icon name"
           item-label="icon name maker"
-          helper-elements="all reset"
+          helper-elements="all none filter"
           tick-property="ticked">
         </div>
       </div>
 
       <div class="form-group"
            ng-class="{'has-error': signupForm.education_level.$invalid && signupForm.education_level.$dirty}">
-        <select ng-model="user.education_level"
+        <select ng-model="$parent.user.education_level"
                 ng-options="education_level for education_level in education_levels">
          <option value="" default selected>Education Level</option>
         </select>
@@ -98,9 +97,8 @@
                   name="description"
                   rows="6"
                   placeholder="Please tell the parents/students more about yourself."
-                  required
                   ng-minlength="40"
-                  ng-model="user.description" />
+                  ng-model="$parent.user.description" />
       </div>
     </div>
 

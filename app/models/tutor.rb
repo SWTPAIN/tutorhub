@@ -7,7 +7,7 @@ class Tutor < ActiveRecord::Base
   has_many :employers, through: :jobs
   has_many :subjects
 
-  validates_presence_of :description, :education_level, :institute
+  validates_presence_of :description, :education_level
 
 
   def set_featured
@@ -19,7 +19,7 @@ class Tutor < ActiveRecord::Base
   end
 
   def subjects_taught
-    
+
   end
 
 end
