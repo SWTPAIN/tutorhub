@@ -4,7 +4,7 @@ class SearchController < ApplicationController
     if jump = find_jump_target(params[:query])
       redirect_to jump
     else
-      Case.search
+    Case.search(params[:query])
     end
   end
 
@@ -12,6 +12,6 @@ class SearchController < ApplicationController
   private
 
     def find_jump_target(keyword)
-      Tutor.find_by(name: keyword) |
+      Tutor.find_by(name: keyword)
     end
 end
