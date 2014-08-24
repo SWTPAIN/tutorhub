@@ -5,6 +5,7 @@ tutorhubControllers.controller("SignupController", ['$scope', '$location', 'User
     $scope.user = {};
     $scope.isTutor = true;
     $scope.education_levels = ["High School", "HD/ASSO", "Bachelor", "Master", "Phd"];
+    $scope.institutes = ["HKU", "CUHK", "UST", "POLYU", "CITYU"] 
     $scope.subjectsTaught = [
       { name: "English", ticked: false },
       { name: "History", ticked: false },

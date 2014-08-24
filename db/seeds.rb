@@ -5,3 +5,16 @@
 #
 #   cities = City.create([{ name: 'Chicago' }, { name: 'Copenhagen' }])
 #   Mayor.create(name: 'Emanuel', city: cities.first)
+
+all_subjects = { English: ["English", "English Literature"],
+  Chinese: ["Chinese", "Chinese Literature"],
+  Mathematics: ["Mathematics", "Mathematics M1", "Mathematics M2"],
+  Science: ["Science", "Physics", "Chemistry", "Biology"]
+}
+
+all_subjects.each do |k, v|
+  v.each do |subject|
+    binding.pry
+    Subject.create(name: subject, category_name: k)
+  end
+end

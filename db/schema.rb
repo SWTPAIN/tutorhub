@@ -67,7 +67,7 @@ ActiveRecord::Schema.define(version: 20140819120021) do
     t.integer  "userable_id"
     t.string   "userable_type"
   end
-  
+
   add_index "users", ["userable_id", "userable_type"], name: "index_users_on_userable_id_and_userable_type", using: :btree
 
 end

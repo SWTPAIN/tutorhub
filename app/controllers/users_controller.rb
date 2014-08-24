@@ -2,11 +2,11 @@ class UsersController < ApplicationController
 
   def create
     #creating Tutor or Employer depends on incoming user json object
-    binding.pry
-    if params[:user][:subjectTaught]
+    if params[:user][:subjects]
+
       @tutor = Tutor.new(tutor_params)
-      binding.pry
       if @tutor.save
+        @tutor.set_subjects(params[:user][:subjects])
         render json: { success: true, user: @tutor }, status: 201
       else
         render json: { success: false, message: 'Invalid Input'}, status: 400
@@ -24,11 +24,11 @@ class UsersController < ApplicationController
   private
 
   def tutor_params
-    params.require(:tutor).permit(:email, :name, :password, :password_confirmation, :description,
+    params.require(:user).permit(:email, :name, :password, :password_confirmation, :description,
                                   :education_level, :institute, :gender)
   end
 
   def employer_params
-    params.require(:employer).permit(:email, :name, :password, :password_confirmation)
+    params.require(:user).permit(:email, :name, :password, :password_confirmation)
   end
 end
